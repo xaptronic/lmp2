@@ -921,7 +921,7 @@
 
           skinsList = [...skinsResponse].sort((a, b) => a.name.localeCompare(b.name));
 
-          const preferredSkinId = "2023-11-tds-racing-imsa";
+          const preferredSkinId = "2025-shopify-cart";
           let initialSkin = skinsList.find((s) => s.id === preferredSkinId) ?? skinsList[0] ?? factorySkin;
 
           const selectedSkin = populateSkinOptions(initialSkin?.id ?? factorySkin.id);
