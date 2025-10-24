@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oreca 07 IMSA Viewer</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+        background: #060608;
+      }
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: radial-gradient(circle at top, #1a1c24 0%, #040507 80%);
+        color: #f5f7ff;
+      }
+      #overlay {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        background: radial-gradient(circle at center, rgba(20, 24, 32, 0.85), rgba(4, 5, 7, 0.95));
+        transition: opacity 0.4s ease;
+        z-index: 2;
+        font-size: clamp(1rem, 3vw, 1.6rem);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      #overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+      #ui {
+        position: fixed;
+        top: 1.2rem;
+        left: 1.2rem;
+        backdrop-filter: blur(14px);
+        background: rgba(15, 18, 24, 0.78);
+        border: 1px solid rgba(80, 110, 140, 0.35);
+        border-radius: 16px;
+        padding: 1.2rem 1.4rem;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+        width: min(320px, 90vw);
+      }
+      #ui h1 {
+        margin: 0;
+        font-size: 1.25rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      #ui label {
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      #ui .actions {
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      #ui a.button,
+      #ui label.button {
+        border: 1px solid rgba(120, 160, 208, 0.55);
+        background: rgba(18, 24, 33, 0.9);
+        color: inherit;
+        border-radius: 12px;
+        padding: 0.5rem 0.9rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      }
+      #ui a.button:hover,
+      #ui label.button:hover,
+      #ui a.button:focus,
+      #ui label.button:focus {
+        border-color: rgba(140, 200, 255, 0.9);
+        box-shadow: 0 0 0 3px rgba(100, 160, 255, 0.25);
+        outline: none;
+      }
+      #ui a.button.disabled {
+        pointer-events: none;
+        opacity: 0.45;
+        border-color: rgba(100, 120, 150, 0.35);
+      }
+      #ui label.button {
+        position: relative;
+        overflow: hidden;
+      }
+      #ui label.button input {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        cursor: pointer;
+      }
+      #uploadName {
+        border: 1px solid rgba(120, 160, 208, 0.35);
+        background: rgba(12, 15, 22, 0.85);
+        color: inherit;
+        border-radius: 10px;
+        padding: 0.55rem 0.7rem;
+        font-size: 0.85rem;
+        font-family: inherit;
+        outline: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      #uploadName:focus {
+        border-color: rgba(140, 200, 255, 0.9);
+        box-shadow: 0 0 0 3px rgba(100, 160, 255, 0.2);
+      }
+      #uploadStatus {
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        min-height: 1.1em;
+      }
+      #uploadStatus.success {
+        color: #6dd69b;
+      }
+      #uploadStatus.error {
+        color: #ff6e7a;
+      }
+      #dropOverlay {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        background: rgba(10, 14, 20, 0.75);
+        color: #c9d9ff;
+        font-size: clamp(1.1rem, 3.5vw, 2rem);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 600;
+        opacity: 0;
+        transform: scale(1.05);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+        z-index: 4;
+      }
+      #dropOverlay.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+      #ui select,
+      #ui button,
+      #ui input[type="range"] {
+        appearance: none;
+        border: 1px solid rgba(120, 160, 208, 0.55);
+        background: rgba(18, 24, 33, 0.9);
+        color: inherit;
+        border-radius: 12px;
+        padding: 0.55rem 0.7rem;
+        font-size: 0.9rem;
+        font-family: inherit;
+        outline: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      #ui select:hover,
+      #ui button:hover,
+      #ui input[type="range"]:hover,
+      #ui select:focus,
+      #ui button:focus,
+      #ui input[type="range"]:focus {
+        border-color: rgba(140, 200, 255, 0.9);
+        box-shadow: 0 0 0 3px rgba(100, 160, 255, 0.25);
+      }
+      #ui button {
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 600;
+      }
+      #ui .row {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        justify-content: space-between;
+      }
+      #ui .row span {
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        opacity: 0.7;
+      }
+      #ui .toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        cursor: pointer;
+      }
+      #ui .toggle input {
+        accent-color: #5ca9ff;
+        width: 1rem;
+        height: 1rem;
+      }
+      canvas {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+      }
+      @media (max-width: 720px) {
+        #ui {
+          right: 0.8rem;
+          left: 0.8rem;
+          width: auto;
+        }
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+          "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="overlay">Initializing Scene...</div>
+    <div id="dropOverlay">Drop PNG To Load As Livery</div>
+    <div id="ui">
+      <h1>Oreca 07 IMSA</h1>
+      <label>
+        Skin
+        <select id="skinSelect" disabled>
+          <option>Loading...</option>
+        </select>
+      </label>
+      <div class="actions">
+        <a id="downloadChassis" class="button disabled" href="#" download>Download car_chassis.png</a>
+      </div>
+      <div id="uploadStatus"></div>
+      <div class="row">
+        <span>Exposure</span>
+        <input id="exposure" type="range" min="0.5" max="2.4" step="0.05" value="1.1" />
+      </div>
+      <div class="toggle">
+        <input type="checkbox" id="showBloom" checked />
+        <span>Key Light Boost</span>
+      </div>
+      <button id="resetCamera">Reset Camera</button>
+    </div>
+    <canvas id="viewport"></canvas>
+
+    <script type="module">
+      import * as THREE from "three";
+      import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+      import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+      import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
+
+      const overlay = document.getElementById("overlay");
+      const canvas = document.getElementById("viewport");
+      const skinSelect = document.getElementById("skinSelect");
+      const exposureControl = document.getElementById("exposure");
+      const bloomToggle = document.getElementById("showBloom");
+      const resetCameraButton = document.getElementById("resetCamera");
+
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.physicallyCorrectLights = true;
+
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x05070a);
+
+      const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.maxPolarAngle = Math.PI * 0.48;
+      controls.minDistance = 2.5;
+      controls.maxDistance = 12;
+
+      const pmrem = new THREE.PMREMGenerator(renderer);
+      pmrem.compileEquirectangularShader();
+
+      const keyLight = new THREE.DirectionalLight(0xf0f1ff, 2.35);
+      keyLight.position.set(6, 8, 5);
+      keyLight.castShadow = true;
+      keyLight.shadow.mapSize.setScalar(2048);
+      keyLight.shadow.bias = -1e-4;
+      scene.add(keyLight);
+
+      const rimLight = new THREE.DirectionalLight(0x8fabff, 1.05);
+      rimLight.position.set(-6, 5, -5);
+      rimLight.castShadow = false;
+      scene.add(rimLight);
+
+      const fillLight = new THREE.HemisphereLight(0x7589c8, 0x07080d, 0.38);
+      scene.add(fillLight);
+
+      const floorGeometry = new THREE.CircleGeometry(8.5, 80);
+      const floorMaterial = new THREE.MeshStandardMaterial({
+        color: 0x090b11,
+        roughness: 0.9,
+        metalness: 0.05,
+        envMapIntensity: 0.08,
+      });
+      const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+      floor.rotation.x = -Math.PI / 2;
+      floor.receiveShadow = true;
+      floor.position.y = 0;
+      scene.add(floor);
+
+      function createContactShadowTexture(size = 512) {
+        const canvas = document.createElement("canvas");
+        canvas.width = canvas.height = size;
+        const context = canvas.getContext("2d");
+        const gradient = context.createRadialGradient(
+          size / 2,
+          size / 2,
+          size * 0.1,
+          size / 2,
+          size / 2,
+          size * 0.48
+        );
+        gradient.addColorStop(0, "rgba(0,0,0,0.55)");
+        gradient.addColorStop(0.5, "rgba(0,0,0,0.35)");
+        gradient.addColorStop(1, "rgba(0,0,0,0)");
+        context.fillStyle = gradient;
+        context.fillRect(0, 0, size, size);
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.wrapS = THREE.ClampToEdgeWrapping;
+        texture.wrapT = THREE.ClampToEdgeWrapping;
+        return texture;
+      }
+
+      const contactShadowTexture = createContactShadowTexture();
+      const contactShadow = new THREE.Mesh(
+        new THREE.PlaneGeometry(1, 1),
+        new THREE.MeshBasicMaterial({
+          map: contactShadowTexture,
+          transparent: true,
+          opacity: 0.55,
+          depthWrite: false,
+        })
+      );
+      contactShadow.rotation.x = -Math.PI / 2;
+      contactShadow.position.y = 0.01;
+      scene.add(contactShadow);
+
+      const resolveAsset = (relativePath) => {
+        if (!relativePath) return relativePath;
+        if (
+          relativePath.startsWith("blob:") ||
+          relativePath.startsWith("data:") ||
+          relativePath.startsWith("http://") ||
+          relativePath.startsWith("https://")
+        ) {
+          return relativePath;
+        }
+        return new URL(relativePath, document.baseURI).toString();
+      };
+
+      const loader = new GLTFLoader();
+      const modelsBase = new URL("models/", document.baseURI).href;
+      loader.setPath(modelsBase);
+      loader.setResourcePath(modelsBase);
+      loader.setCrossOrigin("anonymous");
+      const textureLoader = new THREE.TextureLoader();
+      textureLoader.setCrossOrigin("anonymous");
+
+      let carRoot = null;
+
+      const glassMaterialNames = new Set([
+        "oreca07_windows",
+        "glass_tone.001",
+        "glass_tone.002",
+        "internal_window",
+        "oreca07_red_glass_alpha.001",
+      ]);
+      const carbonMaterialNames = new Set([
+        "ext_carb",
+        "interior",
+        "int_cbn",
+        "vehicle_interior_mm_mat00",
+        "branch_paint_front_1",
+        "branch_paint_front_2",
+        "branch_paint_rear_1",
+        "branch_paint_rear_2",
+        "rims_front_face",
+        "rims_rear_face",
+      ]);
+      const mattePlasticNames = new Set([
+        "light_side_plastic",
+        "interior_plastic",
+        "oreca07_plastic",
+        "oreca07_cpit_plastic",
+        "oreca07_cpit_black",
+        "bras_plastic",
+        "brascbn",
+        "int_plstc",
+      ]);
+      const reflectiveTrimNames = new Set([
+        "ext_alloy",
+        "ext_alloy_tow",
+        "phares_av_chrome",
+        "phares_av_chromedark",
+        "mirror.001",
+      ]);
+
+      const skinBindings = {
+        car_chassis: [],
+        tyre_d: [],
+        tyre_nm: [],
+        tyre_d_blur: [],
+      };
+      let initialCameraPosition = null;
+      let initialControlsTarget = null;
+      const maxAniso = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+      const physicalMaterialCache = new Map();
+      const downloadChassisLink = document.getElementById("downloadChassis");
+      const uploadStatus = document.getElementById("uploadStatus");
+
+      const factorySkin = { id: "default", name: "Factory Default" };
+      let skinsList = [];
+
+      function getSkinById(id) {
+        if (id === factorySkin.id) return factorySkin;
+        return skinsList.find((skin) => skin.id === id);
+      }
+
+      function allSkins() {
+        return [factorySkin, ...skinsList];
+      }
+
+      function updateDownloadButton(skin) {
+        if (skin && skin.car_chassis) {
+          downloadChassisLink.href = resolveAsset(skin.car_chassis);
+          downloadChassisLink.download = `${skin.id}_car_chassis.png`;
+          downloadChassisLink.classList.remove("disabled");
+        } else {
+          downloadChassisLink.href = "#";
+          downloadChassisLink.removeAttribute("download");
+          downloadChassisLink.classList.add("disabled");
+        }
+      }
+
+      function populateSkinOptions(preferredId) {
+        const options = allSkins();
+        const fallbackId = preferredId && options.some((s) => s.id === preferredId)
+          ? preferredId
+          : options[0]?.id ?? factorySkin.id;
+        skinSelect.innerHTML = "";
+        for (const skin of options) {
+          const option = document.createElement("option");
+          option.value = skin.id;
+          option.textContent = skin.name;
+          skinSelect.appendChild(option);
+        }
+        skinSelect.disabled = false;
+        skinSelect.value = fallbackId;
+        updateDownloadButton(getSkinById(fallbackId));
+        return getSkinById(fallbackId);
+      }
+
+      function setUploadStatus(message, type = "") {
+        uploadStatus.textContent = message;
+        uploadStatus.classList.remove("success", "error");
+        if (type) uploadStatus.classList.add(type);
+      }
+
+      const dropOverlay = document.getElementById("dropOverlay");
+      let dragDepth = 0;
+
+      function showDropOverlay() {
+        dropOverlay.classList.add("visible");
+      }
+
+      function hideDropOverlay() {
+        dropOverlay.classList.remove("visible");
+        dragDepth = 0;
+      }
+
+      window.addEventListener("dragenter", (event) => {
+        event.preventDefault();
+        dragDepth += 1;
+        showDropOverlay();
+      });
+
+      window.addEventListener("dragover", (event) => {
+        event.preventDefault();
+      });
+
+      window.addEventListener("dragleave", (event) => {
+        event.preventDefault();
+        dragDepth = Math.max(0, dragDepth - 1);
+        if (dragDepth === 0) {
+          hideDropOverlay();
+        }
+      });
+
+      window.addEventListener("drop", async (event) => {
+        event.preventDefault();
+        hideDropOverlay();
+        const file = event.dataTransfer?.files?.[0];
+        if (file) {
+          await handleFile(file);
+        }
+      });
+
+      async function handleFile(file) {
+        const lower = file.name.toLowerCase();
+        if (lower.endsWith(".png")) {
+          await handleCarChassisImage(file);
+          return;
+        }
+        setUploadStatus("Please provide a .png file", "error");
+      }
+
+      async function handleCarChassisImage(file) {
+        if (skinBindings.car_chassis.length === 0) {
+          setUploadStatus("Car chassis material not ready yet", "error");
+          return;
+        }
+
+        setUploadStatus("");
+        overlay.textContent = `Applying ${file.name}`;
+        overlay.classList.remove("hidden");
+
+        const objectUrl = URL.createObjectURL(file);
+        try {
+          const texture = await loadTexture(objectUrl, {
+            colorSpace: THREE.SRGBColorSpace,
+          });
+          for (const material of skinBindings.car_chassis) {
+            const applied = applyTexture(material, "map", texture);
+            console.debug("Applied dropped car_chassis texture", {
+              name: material.name,
+              matrix: applied.matrix?.elements,
+            });
+          }
+          setUploadStatus(`Applied ${file.name}`, "success");
+        } catch (error) {
+          console.error("Failed to apply car_chassis texture", error);
+          setUploadStatus(error.message || "Failed to apply texture", "error");
+        } finally {
+          overlay.classList.add("hidden");
+          URL.revokeObjectURL(objectUrl);
+          requestRender();
+        }
+      }
+
+      function adjustBodyMaterial(material) {
+        material.metalness = 0.22;
+        material.roughness = 0.36;
+        material.envMapIntensity = 1.05;
+        material.color.multiplyScalar(0.9);
+        if ("clearcoat" in material) {
+          material.clearcoat = Math.min(1, material.clearcoat ?? 0.9);
+        }
+        if ("clearcoatRoughness" in material) {
+          material.clearcoatRoughness = 0.08;
+        }
+        if ("sheenColor" in material && material.sheenColor) {
+          material.sheenColor.setRGB(0.08, 0.09, 0.1);
+          material.sheenRoughness = 0.55;
+        }
+        material.needsUpdate = true;
+      }
+
+      function adjustCarbonMaterial(material) {
+        material.metalness = 0.12;
+        material.roughness = 0.48;
+        material.envMapIntensity = 0.55;
+        material.needsUpdate = true;
+      }
+
+      function adjustMattePlastic(material) {
+        material.metalness = 0.05;
+        material.roughness = 0.6;
+        material.envMapIntensity = 0.35;
+        material.needsUpdate = true;
+      }
+
+      function adjustTrimMaterial(material) {
+        material.metalness = 0.6;
+        material.roughness = 0.18;
+        material.envMapIntensity = 1.45;
+        material.needsUpdate = true;
+      }
+
+      function adjustTyreMaterial(material) {
+        material.metalness = 0.04;
+        material.roughness = 0.75;
+        material.envMapIntensity = 0.45;
+        material.needsUpdate = true;
+      }
+
+      function adjustGlassMaterial(material) {
+        material.transparent = true;
+        material.opacity = 0.18;
+        material.color.setRGB(0.35, 0.42, 0.48);
+        material.metalness = 0.0;
+        material.roughness = 0.06;
+        material.envMapIntensity = 2.4;
+        material.depthWrite = false;
+        material.side = THREE.DoubleSide;
+        material.refractionRatio = 0.985;
+        if ("transmission" in material) {
+          material.transmission = 0.72;
+          material.thickness = 1.4;
+          material.ior = 1.54;
+        }
+        if ("attenuationColor" in material) {
+          material.attenuationColor.setRGB(0.22, 0.28, 0.38);
+          material.attenuationDistance = 1.8;
+        }
+        material.needsUpdate = true;
+      }
+
+      function replaceMaterialReference(node, original, replacement) {
+        if (Array.isArray(node.material)) {
+          const idx = node.material.indexOf(original);
+          if (idx !== -1) node.material[idx] = replacement;
+        } else if (node.material === original) {
+          node.material = replacement;
+        }
+      }
+
+      function promoteToPhysical(node, material) {
+        if (material.isMeshPhysicalMaterial) return material;
+        if (physicalMaterialCache.has(material)) {
+          const existing = physicalMaterialCache.get(material);
+          replaceMaterialReference(node, material, existing);
+          return existing;
+        }
+        const physical = new THREE.MeshPhysicalMaterial({
+          color: material.color.clone(),
+          map: material.map,
+          metalness: material.metalness,
+          roughness: material.roughness,
+          metalnessMap: material.metalnessMap,
+          roughnessMap: material.roughnessMap,
+          normalMap: material.normalMap,
+          normalScale: material.normalScale ? material.normalScale.clone() : undefined,
+          emissive: material.emissive.clone(),
+          emissiveMap: material.emissiveMap,
+          envMap: material.envMap,
+          envMapIntensity: material.envMapIntensity,
+          aoMap: material.aoMap,
+          aoMapIntensity: material.aoMapIntensity,
+          alphaTest: material.alphaTest,
+          transparent: material.transparent,
+          opacity: material.opacity,
+          side: material.side,
+          depthTest: material.depthTest,
+          depthWrite: material.depthWrite,
+          fog: material.fog,
+          name: material.name,
+        });
+        physical.flatShading = material.flatShading;
+        physical.needsUpdate = true;
+        physicalMaterialCache.set(material, physical);
+        replaceMaterialReference(node, material, physical);
+        return physical;
+      }
+
+      function analyzeMaterials(root) {
+        root.traverse((child) => {
+          if (!child.isMesh) return;
+          child.castShadow = true;
+          child.receiveShadow = true;
+          const materials = Array.isArray(child.material) ? child.material : [child.material];
+          for (const material of materials) {
+            if (!material) continue;
+            let workingMaterial = material;
+            const materialName = (material.name || "").toLowerCase();
+
+            if (glassMaterialNames.has(materialName)) {
+              workingMaterial = promoteToPhysical(child, workingMaterial);
+              adjustGlassMaterial(workingMaterial);
+            } else if (carbonMaterialNames.has(materialName)) {
+              adjustCarbonMaterial(workingMaterial);
+            } else if (mattePlasticNames.has(materialName)) {
+              adjustMattePlastic(workingMaterial);
+            } else if (reflectiveTrimNames.has(materialName)) {
+              workingMaterial = promoteToPhysical(child, workingMaterial);
+              adjustTrimMaterial(workingMaterial);
+            }
+
+            if (materialName === "wccarbody") {
+              workingMaterial = promoteToPhysical(child, workingMaterial);
+              adjustBodyMaterial(workingMaterial);
+              skinBindings.car_chassis.push(workingMaterial);
+            } else if (materialName === "tire_michelin14") {
+              adjustTyreMaterial(workingMaterial);
+              skinBindings.tyre_d.push(workingMaterial);
+              skinBindings.tyre_nm.push(workingMaterial);
+            }
+          }
+        });
+        console.log(
+          "Skin bindings",
+          Object.fromEntries(
+            Object.entries(skinBindings).map(([key, arr]) => [key, arr.length])
+          )
+        );
+        if (skinBindings.car_chassis.length > 0) {
+          const preview = skinBindings.car_chassis[0];
+          console.log("WCCARBODY material preview", {
+            name: preview.name,
+            hasMap: !!preview.map,
+            matrix: preview.map?.matrix?.elements,
+            matrixAutoUpdate: preview.map?.matrixAutoUpdate,
+          });
+        }
+      }
+
+      async function loadTexture(path, { colorSpace = THREE.SRGBColorSpace, isNormal = false } = {}) {
+        return new Promise((resolve, reject) => {
+          textureLoader.load(
+            path,
+            (texture) => {
+              texture.colorSpace = isNormal ? THREE.NoColorSpace : colorSpace;
+              texture.flipY = false;
+              texture.anisotropy = maxAniso;
+              texture.needsUpdate = true;
+              resolve(texture);
+            },
+            undefined,
+            reject
+          );
+        });
+      }
+
+      function applyTexture(material, slot, baseTexture) {
+        if (!baseTexture) return null;
+
+        const previous = material[slot];
+        const texture = baseTexture.clone();
+        texture.needsUpdate = true;
+        texture.colorSpace = baseTexture.colorSpace;
+        texture.anisotropy = baseTexture.anisotropy;
+        texture.wrapS = baseTexture.wrapS;
+        texture.wrapT = baseTexture.wrapT;
+        texture.flipY = baseTexture.flipY;
+        texture.matrixAutoUpdate = baseTexture.matrixAutoUpdate;
+        texture.offset.copy(baseTexture.offset);
+        texture.repeat.copy(baseTexture.repeat);
+        texture.center.copy(baseTexture.center);
+        texture.rotation = baseTexture.rotation;
+
+        if (previous && previous.isTexture) {
+          if (previous.matrix && texture.matrix) {
+            texture.matrix.copy(previous.matrix);
+            texture.matrixAutoUpdate = previous.matrixAutoUpdate;
+          }
+          if (previous.offset && texture.offset) {
+            texture.offset.copy(previous.offset);
+          }
+          if (previous.repeat && texture.repeat) {
+            texture.repeat.copy(previous.repeat);
+          }
+          if (typeof previous.rotation === "number") {
+            texture.rotation = previous.rotation;
+          }
+          if (previous.center && texture.center) {
+            texture.center.copy(previous.center);
+          }
+          texture.wrapS = previous.wrapS;
+          texture.wrapT = previous.wrapT;
+        }
+
+        material[slot] = texture;
+        material.needsUpdate = true;
+        if (previous && previous.isTexture && previous !== texture) {
+          previous.dispose?.();
+        }
+        return texture;
+      }
+
+      async function applySkin(skin) {
+        if (!skin) return;
+        overlay.textContent = `Loading ${skin.name}`;
+        overlay.classList.remove("hidden");
+        const jobs = [];
+
+        if (skin.car_chassis) {
+          jobs.push(
+            loadTexture(resolveAsset(skin.car_chassis), {
+              colorSpace: THREE.SRGBColorSpace,
+            }).then((texture) => {
+              for (const material of skinBindings.car_chassis) {
+                const applied = applyTexture(material, "map", texture);
+                console.debug("Applied car_chassis texture", {
+                  name: material.name,
+                  matrix: applied.matrix?.elements,
+                });
+              }
+            })
+          );
+        }
+        if (skin.tyre_d) {
+          jobs.push(
+            loadTexture(resolveAsset(skin.tyre_d), {
+              colorSpace: THREE.SRGBColorSpace,
+            }).then((texture) => {
+              for (const material of skinBindings.tyre_d) {
+                applyTexture(material, "map", texture);
+              }
+            })
+          );
+        }
+        if (skin.tyre_nm && skinBindings.tyre_nm.length > 0) {
+          jobs.push(
+            loadTexture(resolveAsset(skin.tyre_nm), {
+              colorSpace: THREE.NoColorSpace,
+              isNormal: true,
+            }).then((texture) => {
+              for (const material of skinBindings.tyre_nm) {
+                applyTexture(material, "normalMap", texture);
+              }
+            })
+          );
+        }
+        if (skin.tyre_d_blur) {
+          jobs.push(
+            loadTexture(resolveAsset(skin.tyre_d_blur), {
+              colorSpace: THREE.SRGBColorSpace,
+            }).then((texture) => {
+              for (const material of skinBindings.tyre_d_blur) {
+                applyTexture(material, "emissiveMap", texture);
+              }
+            })
+          );
+        }
+        try {
+          await Promise.all(jobs);
+        } finally {
+          overlay.classList.add("hidden");
+          requestRender();
+        }
+      }
+
+      async function init() {
+        try {
+          const [hdrTexture, gltf, skinsResponse] = await Promise.all([
+            new Promise((resolve, reject) => {
+              new RGBELoader().load(
+                resolveAsset("env/studio_small_03_1k.hdr"),
+                (texture) => {
+                  const envMap = pmrem.fromEquirectangular(texture).texture;
+                  scene.environment = envMap;
+                  scene.background = new THREE.Color(0x040507);
+                  texture.dispose();
+                  resolve(envMap);
+                },
+                undefined,
+                reject
+              );
+            }),
+            new Promise((resolve, reject) => {
+              loader.load("oreca07.gltf", (gltf) => resolve(gltf), undefined, reject);
+            }),
+            fetch(resolveAsset("skins/skins.json")).then((res) => res.json()),
+          ]);
+
+          renderer.toneMapping = THREE.ACESFilmicToneMapping;
+          renderer.toneMappingExposure = parseFloat(exposureControl.value);
+
+          carRoot = gltf.scene;
+          analyzeMaterials(carRoot);
+          scene.add(carRoot);
+
+          // Normalize car scale so the wheelbase roughly matches real life (~4.74 m for Oreca 07)
+          carRoot.position.y = 0;
+          carRoot.updateMatrixWorld(true);
+          const originalBounds = new THREE.Box3().setFromObject(carRoot);
+          const originalSize = originalBounds.getSize(new THREE.Vector3());
+          const targetLength = 4.74;
+          const currentLength = Math.max(originalSize.x, 0.01);
+          const uniformScale = targetLength / currentLength;
+          carRoot.scale.setScalar(uniformScale);
+          carRoot.updateMatrixWorld(true);
+
+          const bounds = new THREE.Box3().setFromObject(carRoot);
+          const center = bounds.getCenter(new THREE.Vector3());
+          const size = bounds.getSize(new THREE.Vector3());
+          const radius = Math.max(size.x, size.y, size.z) * 0.5 || 1;
+
+          const offsetDir = new THREE.Vector3(1.25, 0.4, 0.95).normalize();
+          const distance = Math.max(radius * 2.4, radius + 1.6);
+          const position = center.clone().add(offsetDir.multiplyScalar(distance));
+
+          camera.position.copy(position);
+          controls.target.copy(center);
+          controls.minDistance = Math.max(radius * 0.8, 1.0);
+          controls.maxDistance = Math.max(radius * 3.2, controls.minDistance + 1.2);
+          controls.update();
+
+          initialCameraPosition = camera.position.clone();
+          initialControlsTarget = controls.target.clone();
+
+          floor.position.y = bounds.min.y - 0.01;
+          contactShadow.scale.set(radius * 2.6, radius * 2.6, 1);
+          contactShadow.position.set(center.x, bounds.min.y + 0.015, center.z);
+
+          skinsList = [...skinsResponse].sort((a, b) => a.name.localeCompare(b.name));
+
+          const preferredSkinId = "2023-11-tds-racing-imsa";
+          let initialSkin = skinsList.find((s) => s.id === preferredSkinId) ?? skinsList[0] ?? factorySkin;
+
+          const selectedSkin = populateSkinOptions(initialSkin?.id ?? factorySkin.id);
+          if (selectedSkin && selectedSkin.id !== factorySkin.id) {
+            await applySkin(selectedSkin);
+          }
+
+          skinSelect.addEventListener("change", async () => {
+            const selected = getSkinById(skinSelect.value);
+            updateDownloadButton(selected);
+            if (!selected || selected.id === factorySkin.id) {
+              overlay.classList.add("hidden");
+              return;
+            }
+            await applySkin(selected);
+          });
+
+          exposureControl.addEventListener("input", () => {
+            renderer.toneMappingExposure = parseFloat(exposureControl.value);
+            requestRender();
+          });
+
+          bloomToggle.addEventListener("change", () => {
+            keyLight.intensity = bloomToggle.checked ? 2.6 : 2.0;
+            rimLight.intensity = bloomToggle.checked ? 1.25 : 0.85;
+            requestRender();
+          });
+
+          resetCameraButton.addEventListener("click", () => {
+            if (!initialCameraPosition || !initialControlsTarget) return;
+            camera.position.copy(initialCameraPosition);
+            controls.target.copy(initialControlsTarget);
+            controls.update();
+            requestRender();
+          });
+
+          overlay.classList.add("hidden");
+          requestRender();
+        } catch (error) {
+          console.error(error);
+          overlay.textContent = "Failed to load viewer";
+        }
+      }
+
+      function onWindowResize() {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
+        requestRender();
+      }
+      window.addEventListener("resize", onWindowResize);
+
+      let rafHandle = null;
+      function renderScene() {
+        rafHandle = null;
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      function requestRender() {
+        if (rafHandle === null) {
+          rafHandle = requestAnimationFrame(renderScene);
+        }
+      }
+
+      controls.addEventListener("change", requestRender);
+      controls.addEventListener("start", requestRender);
+      controls.addEventListener("end", requestRender);
+
+      init();
+    </script>
+  </body>
+</html>

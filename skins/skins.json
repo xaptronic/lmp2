@@ -1,0 +1,442 @@
+[
+  {
+    "id": "2017-13-rebellion-racing-team-imsa",
+    "name": "2017 #13 Rebellion Racing Team IMSA",
+    "car_chassis": "skins/2017-13-rebellion-racing-team-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2017-13-rebellion-racing-team-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2017-13-rebellion-racing-team-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2017-13-rebellion-racing-team-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2017-13-rebellion-racing-team-imsa/tyre_nm.png",
+    "download": "skins/zips/2017-13-rebellion-racing-team-imsa.zip"
+  },
+  {
+    "id": "2017-13-rebellion-racing-team-road-atlanta-imsa",
+    "name": "2017 #13 Rebellion Racing Team Road Atlanta IMSA",
+    "car_chassis": "skins/2017-13-rebellion-racing-team-road-atlanta-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2017-13-rebellion-racing-team-road-atlanta-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2017-13-rebellion-racing-team-road-atlanta-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2017-13-rebellion-racing-team-road-atlanta-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2017-13-rebellion-racing-team-road-atlanta-imsa/tyre_nm.png",
+    "download": "skins/zips/2017-13-rebellion-racing-team-road-atlanta-imsa.zip"
+  },
+  {
+    "id": "2017-85-jdc-miller-autosports-imsa",
+    "name": "2017 #85 JDC-Miller Autosports IMSA",
+    "car_chassis": "skins/2017-85-jdc-miller-autosports-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2017-85-jdc-miller-autosports-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2017-85-jdc-miller-autosports-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2017-85-jdc-miller-autosports-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2017-85-jdc-miller-autosports-imsa/tyre_nm.png",
+    "download": "skins/zips/2017-85-jdc-miller-autosports-imsa.zip"
+  },
+  {
+    "id": "2018-37-jackie-chan-racing-imsa",
+    "name": "2018 #37 Jackie Chan Racing IMSA",
+    "car_chassis": "skins/2018-37-jackie-chan-racing-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2018-37-jackie-chan-racing-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2018-37-jackie-chan-racing-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2018-37-jackie-chan-racing-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2018-37-jackie-chan-racing-imsa/tyre_nm.png",
+    "download": "skins/zips/2018-37-jackie-chan-racing-imsa.zip"
+  },
+  {
+    "id": "2018-38-performance-tech-motorsports-imsa",
+    "name": "2018 #38 Performance Tech Motorsports IMSA",
+    "car_chassis": "skins/2018-38-performance-tech-motorsports-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2018-38-performance-tech-motorsports-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2018-38-performance-tech-motorsports-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2018-38-performance-tech-motorsports-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2018-38-performance-tech-motorsports-imsa/tyre_nm.png",
+    "download": "skins/zips/2018-38-performance-tech-motorsports-imsa.zip"
+  },
+  {
+    "id": "2018-54-core-autosport-imsa",
+    "name": "2018 #54 CORE Autosport IMSA",
+    "car_chassis": "skins/2018-54-core-autosport-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2018-54-core-autosport-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2018-54-core-autosport-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2018-54-core-autosport-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2018-54-core-autosport-imsa/tyre_nm.png",
+    "download": "skins/zips/2018-54-core-autosport-imsa.zip"
+  },
+  {
+    "id": "2018-78-jackie-chan-racing-imsa",
+    "name": "2018 #78 Jackie Chan Racing IMSA",
+    "car_chassis": "skins/2018-78-jackie-chan-racing-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2018-78-jackie-chan-racing-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2018-78-jackie-chan-racing-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2018-78-jackie-chan-racing-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2018-78-jackie-chan-racing-imsa/tyre_nm.png",
+    "download": "skins/zips/2018-78-jackie-chan-racing-imsa.zip"
+  },
+  {
+    "id": "2018-85-jdc-miller-autosports-imsa",
+    "name": "2018 #85 JDC-Miller Autosports IMSA",
+    "car_chassis": "skins/2018-85-jdc-miller-autosports-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2018-85-jdc-miller-autosports-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2018-85-jdc-miller-autosports-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2018-85-jdc-miller-autosports-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2018-85-jdc-miller-autosports-imsa/tyre_nm.png",
+    "download": "skins/zips/2018-85-jdc-miller-autosports-imsa.zip"
+  },
+  {
+    "id": "2018-99-jdc-miller-autosports-imsa",
+    "name": "2018 #99 JDC-Miller Autosports IMSA",
+    "car_chassis": "skins/2018-99-jdc-miller-autosports-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2018-99-jdc-miller-autosports-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2018-99-jdc-miller-autosports-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2018-99-jdc-miller-autosports-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2018-99-jdc-miller-autosports-imsa/tyre_nm.png",
+    "download": "skins/zips/2018-99-jdc-miller-autosports-imsa.zip"
+  },
+  {
+    "id": "2019-18-dragonspeed-usa-imsa",
+    "name": "2019 #18 DragonSpeed USA IMSA",
+    "car_chassis": "skins/2019-18-dragonspeed-usa-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2019-18-dragonspeed-usa-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2019-18-dragonspeed-usa-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2019-18-dragonspeed-usa-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2019-18-dragonspeed-usa-imsa/tyre_nm.png",
+    "download": "skins/zips/2019-18-dragonspeed-usa-imsa.zip"
+  },
+  {
+    "id": "2019-81-dragonspeed-usa-imsa",
+    "name": "2019 #81 DragonSpeed USA IMSA",
+    "car_chassis": "skins/2019-81-dragonspeed-usa-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2019-81-dragonspeed-usa-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2019-81-dragonspeed-usa-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2019-81-dragonspeed-usa-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2019-81-dragonspeed-usa-imsa/tyre_nm.png",
+    "download": "skins/zips/2019-81-dragonspeed-usa-imsa.zip"
+  },
+  {
+    "id": "2020-08-tower-motorsport-by-starworks-imsa",
+    "name": "2020 #08 Tower Motorsport by Starworks IMSA",
+    "car_chassis": "skins/2020-08-tower-motorsport-by-starworks-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2020-08-tower-motorsport-by-starworks-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2020-08-tower-motorsport-by-starworks-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2020-08-tower-motorsport-by-starworks-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2020-08-tower-motorsport-by-starworks-imsa/tyre_nm.png",
+    "download": "skins/zips/2020-08-tower-motorsport-by-starworks-imsa.zip"
+  },
+  {
+    "id": "2020-18-era-motorsport-imsa",
+    "name": "2020 #18 Era Motorsport IMSA",
+    "car_chassis": "skins/2020-18-era-motorsport-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2020-18-era-motorsport-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2020-18-era-motorsport-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2020-18-era-motorsport-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2020-18-era-motorsport-imsa/tyre_nm.png",
+    "download": "skins/zips/2020-18-era-motorsport-imsa.zip"
+  },
+  {
+    "id": "2020-38-performance-tech-motorsports-imsa",
+    "name": "2020 #38 Performance Tech Motorsports IMSA",
+    "car_chassis": "skins/2020-38-performance-tech-motorsports-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2020-38-performance-tech-motorsports-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2020-38-performance-tech-motorsports-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2020-38-performance-tech-motorsports-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2020-38-performance-tech-motorsports-imsa/tyre_nm.png",
+    "download": "skins/zips/2020-38-performance-tech-motorsports-imsa.zip"
+  },
+  {
+    "id": "2020-51-inter-europol-competition-imsa",
+    "name": "2020 #51 Inter Europol Competition IMSA",
+    "car_chassis": "skins/2020-51-inter-europol-competition-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2020-51-inter-europol-competition-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2020-51-inter-europol-competition-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2020-51-inter-europol-competition-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2020-51-inter-europol-competition-imsa/tyre_nm.png",
+    "download": "skins/zips/2020-51-inter-europol-competition-imsa.zip"
+  },
+  {
+    "id": "2020-52-mathiasen-motorsports-imsa",
+    "name": "2020 #52 Mathiasen Motorsports IMSA",
+    "car_chassis": "skins/2020-52-mathiasen-motorsports-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2020-52-mathiasen-motorsports-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2020-52-mathiasen-motorsports-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2020-52-mathiasen-motorsports-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2020-52-mathiasen-motorsports-imsa/tyre_nm.png",
+    "download": "skins/zips/2020-52-mathiasen-motorsports-imsa.zip"
+  },
+  {
+    "id": "2020-81-dragonspeed-usa-imsa",
+    "name": "2020 #81 DragonSpeed USA IMSA",
+    "car_chassis": "skins/2020-81-dragonspeed-usa-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2020-81-dragonspeed-usa-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2020-81-dragonspeed-usa-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2020-81-dragonspeed-usa-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2020-81-dragonspeed-usa-imsa/tyre_nm.png",
+    "download": "skins/zips/2020-81-dragonspeed-usa-imsa.zip"
+  },
+  {
+    "id": "2021-08-tower-motorsport-by-starworks-imsa",
+    "name": "2021 #08 Tower Motorsport by Starworks IMSA",
+    "car_chassis": "skins/2021-08-tower-motorsport-by-starworks-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2021-08-tower-motorsport-by-starworks-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2021-08-tower-motorsport-by-starworks-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2021-08-tower-motorsport-by-starworks-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2021-08-tower-motorsport-by-starworks-imsa/tyre_nm.png",
+    "download": "skins/zips/2021-08-tower-motorsport-by-starworks-imsa.zip"
+  },
+  {
+    "id": "2021-11-win-autosport-imsa",
+    "name": "2021 #11 WIN Autosport IMSA",
+    "car_chassis": "skins/2021-11-win-autosport-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2021-11-win-autosport-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2021-11-win-autosport-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2021-11-win-autosport-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2021-11-win-autosport-imsa/tyre_nm.png",
+    "download": "skins/zips/2021-11-win-autosport-imsa.zip"
+  },
+  {
+    "id": "2021-18-era-motorsport-imsa",
+    "name": "2021 #18 Era Motorsport IMSA",
+    "car_chassis": "skins/2021-18-era-motorsport-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2021-18-era-motorsport-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2021-18-era-motorsport-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2021-18-era-motorsport-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2021-18-era-motorsport-imsa/tyre_nm.png",
+    "download": "skins/zips/2021-18-era-motorsport-imsa.zip"
+  },
+  {
+    "id": "2021-20-high-class-racing-imsa",
+    "name": "2021 #20 High Class Racing IMSA",
+    "car_chassis": "skins/2021-20-high-class-racing-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2021-20-high-class-racing-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2021-20-high-class-racing-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2021-20-high-class-racing-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2021-20-high-class-racing-imsa/tyre_nm.png",
+    "download": "skins/zips/2021-20-high-class-racing-imsa.zip"
+  },
+  {
+    "id": "2021-22-united-autosport-imsa",
+    "name": "2021 #22 United Autosport IMSA",
+    "car_chassis": "skins/2021-22-united-autosport-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2021-22-united-autosport-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2021-22-united-autosport-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2021-22-united-autosport-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2021-22-united-autosport-imsa/tyre_nm.png",
+    "download": "skins/zips/2021-22-united-autosport-imsa.zip"
+  },
+  {
+    "id": "2021-29-racing-team-nederland-imsa",
+    "name": "2021 #29 Racing Team Nederland IMSA",
+    "car_chassis": "skins/2021-29-racing-team-nederland-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2021-29-racing-team-nederland-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2021-29-racing-team-nederland-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2021-29-racing-team-nederland-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2021-29-racing-team-nederland-imsa/tyre_nm.png",
+    "download": "skins/zips/2021-29-racing-team-nederland-imsa.zip"
+  },
+  {
+    "id": "2021-52-pr1-mathiasen-motorsports-imsa",
+    "name": "2021 #52 PR1 Mathiasen Motorsports IMSA",
+    "car_chassis": "skins/2021-52-pr1-mathiasen-motorsports-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2021-52-pr1-mathiasen-motorsports-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2021-52-pr1-mathiasen-motorsports-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2021-52-pr1-mathiasen-motorsports-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2021-52-pr1-mathiasen-motorsports-imsa/tyre_nm.png",
+    "download": "skins/zips/2021-52-pr1-mathiasen-motorsports-imsa.zip"
+  },
+  {
+    "id": "2021-81-dragonspeed-usa-imsa",
+    "name": "2021 #81 DragonSpeed USA IMSA",
+    "car_chassis": "skins/2021-81-dragonspeed-usa-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2021-81-dragonspeed-usa-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2021-81-dragonspeed-usa-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2021-81-dragonspeed-usa-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2021-81-dragonspeed-usa-imsa/tyre_nm.png",
+    "download": "skins/zips/2021-81-dragonspeed-usa-imsa.zip"
+  },
+  {
+    "id": "2021-82-dragonspeed-usa-imsa",
+    "name": "2021 #82 DragonSpeed USA IMSA",
+    "car_chassis": "skins/2021-82-dragonspeed-usa-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2021-82-dragonspeed-usa-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2021-82-dragonspeed-usa-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2021-82-dragonspeed-usa-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2021-82-dragonspeed-usa-imsa/tyre_nm.png",
+    "download": "skins/zips/2021-82-dragonspeed-usa-imsa.zip"
+  },
+  {
+    "id": "2022-08-tower-motorsport-by-starworks-imsa",
+    "name": "2022 #08 Tower Motorsport by Starworks IMSA",
+    "car_chassis": "skins/2022-08-tower-motorsport-by-starworks-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2022-08-tower-motorsport-by-starworks-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2022-08-tower-motorsport-by-starworks-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2022-08-tower-motorsport-by-starworks-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2022-08-tower-motorsport-by-starworks-imsa/tyre_nm.png",
+    "download": "skins/zips/2022-08-tower-motorsport-by-starworks-imsa.zip"
+  },
+  {
+    "id": "2022-11-pr1-mathiasen-motorsports-imsa",
+    "name": "2022 #11 PR1 Mathiasen Motorsports IMSA",
+    "car_chassis": "skins/2022-11-pr1-mathiasen-motorsports-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2022-11-pr1-mathiasen-motorsports-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2022-11-pr1-mathiasen-motorsports-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2022-11-pr1-mathiasen-motorsports-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2022-11-pr1-mathiasen-motorsports-imsa/tyre_nm.png",
+    "download": "skins/zips/2022-11-pr1-mathiasen-motorsports-imsa.zip"
+  },
+  {
+    "id": "2022-11-pr1-mathiasen-motorsports-imsa-2",
+    "name": "2022 #11 PR1 Mathiasen Motorsports IMSA 2",
+    "car_chassis": "skins/2022-11-pr1-mathiasen-motorsports-imsa-2/car_chassis.png",
+    "metal_detail_9": "skins/2022-11-pr1-mathiasen-motorsports-imsa-2/metal_detail_9.png",
+    "tyre_d": "skins/2022-11-pr1-mathiasen-motorsports-imsa-2/tyre_d.png",
+    "tyre_d_blur": "skins/2022-11-pr1-mathiasen-motorsports-imsa-2/tyre_d_blur.png",
+    "tyre_nm": "skins/2022-11-pr1-mathiasen-motorsports-imsa-2/tyre_nm.png",
+    "download": "skins/zips/2022-11-pr1-mathiasen-motorsports-imsa-2.zip"
+  },
+  {
+    "id": "2022-18-era-motorsport-imsa",
+    "name": "2022 #18 Era Motorsport IMSA",
+    "car_chassis": "skins/2022-18-era-motorsport-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2022-18-era-motorsport-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2022-18-era-motorsport-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2022-18-era-motorsport-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2022-18-era-motorsport-imsa/tyre_nm.png",
+    "download": "skins/zips/2022-18-era-motorsport-imsa.zip"
+  },
+  {
+    "id": "2022-20-high-class-racing-imsa",
+    "name": "2022 #20 High Class Racing IMSA",
+    "car_chassis": "skins/2022-20-high-class-racing-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2022-20-high-class-racing-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2022-20-high-class-racing-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2022-20-high-class-racing-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2022-20-high-class-racing-imsa/tyre_nm.png",
+    "download": "skins/zips/2022-20-high-class-racing-imsa.zip"
+  },
+  {
+    "id": "2022-22-united-autosports-imsa",
+    "name": "2022 #22 United Autosports IMSA",
+    "car_chassis": "skins/2022-22-united-autosports-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2022-22-united-autosports-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2022-22-united-autosports-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2022-22-united-autosports-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2022-22-united-autosports-imsa/tyre_nm.png",
+    "download": "skins/zips/2022-22-united-autosports-imsa.zip"
+  },
+  {
+    "id": "2022-29-dragonspeed-usa-imsa",
+    "name": "2022 #29 DragonSpeed USA IMSA",
+    "car_chassis": "skins/2022-29-dragonspeed-usa-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2022-29-dragonspeed-usa-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2022-29-dragonspeed-usa-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2022-29-dragonspeed-usa-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2022-29-dragonspeed-usa-imsa/tyre_nm.png",
+    "download": "skins/zips/2022-29-dragonspeed-usa-imsa.zip"
+  },
+  {
+    "id": "2022-29-dragonspeed-usa-imsa-1",
+    "name": "2022 #29 DragonSpeed USA IMSA-1",
+    "car_chassis": "skins/2022-29-dragonspeed-usa-imsa-1/car_chassis.png",
+    "metal_detail_9": "skins/2022-29-dragonspeed-usa-imsa-1/metal_detail_9.png",
+    "tyre_d": "skins/2022-29-dragonspeed-usa-imsa-1/tyre_d.png",
+    "tyre_d_blur": "skins/2022-29-dragonspeed-usa-imsa-1/tyre_d_blur.png",
+    "tyre_nm": "skins/2022-29-dragonspeed-usa-imsa-1/tyre_nm.png",
+    "download": "skins/zips/2022-29-dragonspeed-usa-imsa-1.zip"
+  },
+  {
+    "id": "2022-29-racing-team-nederland-imsa",
+    "name": "2022 #29 Racing Team Nederland IMSA",
+    "car_chassis": "skins/2022-29-racing-team-nederland-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2022-29-racing-team-nederland-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2022-29-racing-team-nederland-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2022-29-racing-team-nederland-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2022-29-racing-team-nederland-imsa/tyre_nm.png",
+    "download": "skins/zips/2022-29-racing-team-nederland-imsa.zip"
+  },
+  {
+    "id": "2022-52-pr1-mathiasen-motorsports-imsa",
+    "name": "2022 #52 PR1 Mathiasen Motorsports IMSA",
+    "car_chassis": "skins/2022-52-pr1-mathiasen-motorsports-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2022-52-pr1-mathiasen-motorsports-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2022-52-pr1-mathiasen-motorsports-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2022-52-pr1-mathiasen-motorsports-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2022-52-pr1-mathiasen-motorsports-imsa/tyre_nm.png",
+    "download": "skins/zips/2022-52-pr1-mathiasen-motorsports-imsa.zip"
+  },
+  {
+    "id": "2022-52-pr1-mathiasen-motorsports-imsa-1",
+    "name": "2022 #52 PR1 Mathiasen Motorsports IMSA-1",
+    "car_chassis": "skins/2022-52-pr1-mathiasen-motorsports-imsa-1/car_chassis.png",
+    "metal_detail_9": "skins/2022-52-pr1-mathiasen-motorsports-imsa-1/metal_detail_9.png",
+    "tyre_d": "skins/2022-52-pr1-mathiasen-motorsports-imsa-1/tyre_d.png",
+    "tyre_d_blur": "skins/2022-52-pr1-mathiasen-motorsports-imsa-1/tyre_d_blur.png",
+    "tyre_nm": "skins/2022-52-pr1-mathiasen-motorsports-imsa-1/tyre_nm.png",
+    "download": "skins/zips/2022-52-pr1-mathiasen-motorsports-imsa-1.zip"
+  },
+  {
+    "id": "2022-68-g-drive-racing-imsa",
+    "name": "2022 #68 G-Drive Racing IMSA",
+    "car_chassis": "skins/2022-68-g-drive-racing-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2022-68-g-drive-racing-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2022-68-g-drive-racing-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2022-68-g-drive-racing-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2022-68-g-drive-racing-imsa/tyre_nm.png",
+    "download": "skins/zips/2022-68-g-drive-racing-imsa.zip"
+  },
+  {
+    "id": "2022-69-g-drive-racing-imsa",
+    "name": "2022 #69 G-Drive Racing IMSA",
+    "car_chassis": "skins/2022-69-g-drive-racing-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2022-69-g-drive-racing-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2022-69-g-drive-racing-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2022-69-g-drive-racing-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2022-69-g-drive-racing-imsa/tyre_nm.png",
+    "download": "skins/zips/2022-69-g-drive-racing-imsa.zip"
+  },
+  {
+    "id": "2023-04-crowdstrike-racing-by-apr-imsa",
+    "name": "2023 #04 CrowdStrike Racing by APR IMSA",
+    "car_chassis": "skins/2023-04-crowdstrike-racing-by-apr-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2023-04-crowdstrike-racing-by-apr-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2023-04-crowdstrike-racing-by-apr-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2023-04-crowdstrike-racing-by-apr-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2023-04-crowdstrike-racing-by-apr-imsa/tyre_nm.png",
+    "download": "skins/zips/2023-04-crowdstrike-racing-by-apr-imsa.zip"
+  },
+  {
+    "id": "2023-11-tds-racing-imsa",
+    "name": "2023 #11 TDS Racing IMSA",
+    "car_chassis": "skins/2023-11-tds-racing-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2023-11-tds-racing-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2023-11-tds-racing-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2023-11-tds-racing-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2023-11-tds-racing-imsa/tyre_nm.png",
+    "download": "skins/zips/2023-11-tds-racing-imsa.zip"
+  },
+  {
+    "id": "2023-35-tds-racing-imsa",
+    "name": "2023 #35 TDS Racing IMSA",
+    "car_chassis": "skins/2023-35-tds-racing-imsa/car_chassis.png",
+    "metal_detail_9": "skins/2023-35-tds-racing-imsa/metal_detail_9.png",
+    "tyre_d": "skins/2023-35-tds-racing-imsa/tyre_d.png",
+    "tyre_d_blur": "skins/2023-35-tds-racing-imsa/tyre_d_blur.png",
+    "tyre_nm": "skins/2023-35-tds-racing-imsa/tyre_nm.png",
+    "download": "skins/zips/2023-35-tds-racing-imsa.zip"
+  },
+  {
+    "id": "2025-ai-test",
+    "name": "2025 AI Test",
+    "car_chassis": "skins/2025-ai-test/car_chassis.png",
+    "metal_detail_9": "skins/2025-ai-test/metal_detail_9.png",
+    "tyre_d": "skins/2025-ai-test/tyre_d.png",
+    "tyre_d_blur": "skins/2025-ai-test/tyre_d_blur.png",
+    "tyre_nm": "skins/2025-ai-test/tyre_nm.png",
+    "download": "skins/zips/2025-ai-test.zip"
+  },
+  {
+    "id": "Template",
+    "name": "Template",
+    "car_chassis": "skins/template/car_chassis.png",
+    "metal_detail_9": "skins/template/metal_detail_9.png",
+    "tyre_d": "skins/template/tyre_d.png",
+    "tyre_d_blur": "skins/template/tyre_d_blur.png",
+    "tyre_nm": "skins/template/tyre_nm.png",
+    "download": "skins/zips/2025-ai-test.zip"
+  }
+]
