@@ -440,6 +440,16 @@
     "download": "skins/zips/2025-shopify-cart.zip"
   },
   {
+    "id": "2025-shopify-cart-1",
+    "name": "2025 Shopify Cart v2",
+    "car_chassis": "skins/2025-shopify-cart-1/car_chassis.png",
+    "metal_detail_9": "skins/2025-shopify-cart-1/metal_detail_9.png",
+    "tyre_d": "skins/2025-shopify-cart-1/tyre_d.png",
+    "tyre_d_blur": "skins/2025-shopify-cart-1/tyre_d_blur.png",
+    "tyre_nm": "skins/2025-shopify-cart-1/tyre_nm.png",
+    "download": "skins/zips/2025-shopify-cart-1.zip"
+  },
+  {
     "id": "Template",
     "name": "Template",
     "car_chassis": "skins/template/car_chassis.png",
